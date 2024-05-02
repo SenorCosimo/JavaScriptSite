@@ -1,0 +1,217 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --navbar-color: rgb(14, 137, 179);
+    --main-text-color: black;
+    --menu-text-color: white;
+    --main-bg-color: white;
+    --second-bg-color: rgb(199, 223, 255);
+}
+.dark-mode{
+    --navbar-color: rgb(4, 56, 73); 
+    --main-text-color: white;
+    --menu-text-color: black;
+    --main-bg-color: rgb(4, 1, 39);
+    --second-bg-color: rgb(2, 46, 104);
+}
+
+#Menu-Toggle{
+    display: none;
+}
+#Menu-Toggle input{
+    display: none;
+}
+
+#Theme-Toggle{
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 34px;
+}
+#Theme-Toggle input{
+    display: none;
+}
+
+#Theme-Toggle .slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 34px;
+    background-color: rgb(255, 255, 255);
+    transition: background-color .5s;
+    height: 34px;
+}
+#Theme-Toggle .slider::before{
+    position: absolute;
+    content: '';
+    background-color: rgb(253, 227, 75);
+    bottom: 4px;
+    left: 4px;
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    transition: transform .5s;
+}
+
+#Theme-Toggle input:checked + .slider{
+    background-color: rgb(0, 0, 0);
+}
+
+#Theme-Toggle input:checked + .slider::before{
+    transform: translateX(26px);
+    background-color: rgb(148, 178, 235);
+}
+
+.Main-container{
+    position: absolute;
+    background-color: var(--main-bg-color);
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.Header-box{
+    display: flex;
+    align-items: center;
+    background-color: var(--navbar-color);
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100px;
+    border-bottom: 5px solid rgb(2, 13, 75);
+}
+.Header-box .Title{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 35px;
+    text-decoration: underline;
+    cursor: default;
+    background-color: var( --menu-text-color);
+    color: var(--main-text-color);
+    width:fit-content;
+    height: fit-content;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.Header-box .Navbar-Box{
+    display: flex;
+    align-items: center;
+}
+.Header-box .Navbar-Box .NavBar{
+    display: flex;
+    padding: 5px;
+    align-items: center;
+}
+.Header-box .Navbar-Box .NavBar li{
+    background-color: var(--main-text-color);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    list-style-type: none;
+    width: fit-content;
+    height: fit-content;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.Header-box .Navbar-Box .NavBar li:hover{
+    background-color: var( --menu-text-color);
+}
+
+.Header-box .Navbar-Box .NavBar a{
+    text-decoration: none;
+    color: var( --menu-text-color);
+    display: block;
+    padding: 20px;
+}
+
+.Header-box .Navbar-Box .NavBar a:hover{
+    color: var(--main-text-color);
+}
+
+
+
+.Second-container {
+    position: absolute;
+    background-color: var(--second-bg-color);
+    top:100px;
+    z-index: -1;
+}
+
+/*Nested Properties used for changing themes*/
+.Main-container, .Second-container, .Header-box, .Header-box .Navbar-Box, .Header-box .Title,
+ .Header-box .NavBar li, .Header-box .NavBar li:hover,
+ .Header-box .NavBar a{
+    transition: background-color .5s, color .5s;
+}
+
+
+@media only screen and (max-width: 768px)  {
+
+    .Open-Menu{
+        transform: translateX(0);
+        /*visibility: visible;*/
+    }
+    .Closed-Menu{
+        transform: translateX(-100%);
+        /*visibility: hidden;*/
+        
+    }
+    /*Menu Toggle*/
+    #Menu-Toggle{
+        position: relative;
+        display: block;
+        background-color: red;
+        border-radius: 10px;
+        margin-left: 10px;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+    }
+    /*This is for the HeaderBox*/
+    .Header-box{
+        height: 80px;
+    }
+    
+    /*This is for the Side Menu*/
+    .Header-box .Navbar-Box{
+        top: 80px;
+        height: 100%;
+        width: 200px;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--navbar-color);
+        border-right: 5px solid rgb(2, 13, 75);
+    }
+
+    .Header-box .Navbar-Box .NavBar{
+        flex-direction: column;
+        width: 100%;
+        padding: 0px;
+        margin-top: 50px;
+    }
+    .Header-box .Navbar-Box .NavBar li{
+        width: 100%;
+        text-align: center;
+        border-radius: 0px;
+        margin: 0px;
+    }
+    /*This is the Theme Toggle*/
+    #Theme-Toggle{
+        margin-top: 10px;
+    }
+    /*This is for the Main content*/
+    .Second-container {
+        position: relative;
+        background-color: var(--second-bg-color);
+        top:80px;
+    }
+}
+.screen-transition{
+    transition: ;
+}
